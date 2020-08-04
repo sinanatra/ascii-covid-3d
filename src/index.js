@@ -65,9 +65,9 @@ function animate() {
 
 function render() {
     var timer = Date.now() - start;
-    sphere.position.y = Math.abs(Math.sin(timer * 0.002)) * 150;
-    sphere.rotation.x = timer * 0.0003;
-    sphere.rotation.z = timer * 0.0002;
+    // sphere.position.y = Math.abs(Math.sin(timer * 0.002)) * 150;
+    // sphere.rotation.x = timer * 0.0003;
+    // sphere.rotation.z = timer * 0.0002;
     camera.position.z = Math.abs(Math.sin(timer * 0.0002)) * 500;;
     controls.update();
     effect.render(scene, camera);
