@@ -48,7 +48,7 @@ function init() {
 
 
     // container.appendChild( renderer.domElement );
-    effect = new AsciiEffect( renderer, '#?!"“”‘’;:π*+•—-_,.   ', { invert: true } );
+    effect = new AsciiEffect( renderer, 'geo?!"’;:π*+•—-_,.  ', { invert: true } );
     effect.setSize(width, height);
     container.appendChild(effect.domElement);
 
@@ -69,9 +69,9 @@ function animate() {
 
 function render() {
     var timer = Date.now() - start;
-    // covid.position.y = Math.abs(Math.sin(timer * 0.002)) * 150;
-    // covid.rotation.x = timer * 0.0003;
-    // covid.rotation.z = timer * 0.0002;
+    covid.position.y =  timer * 0.0003;
+    covid.rotation.x = timer * 0.0003;
+    covid.rotation.z = timer * 0.0002;
     camera.position.z = Math.abs(Math.sin(timer * 0.0002)) * 500;;
     controls.update();
     effect.render(scene, camera);
