@@ -8,7 +8,7 @@ const TrackballControls = require('three-trackballcontrols');
 
 var container;
 var camera, controls, scene, renderer;
-var sphere, plane, effect;
+var covid, plane, effect;
 var start = Date.now();
 
 init();
@@ -24,17 +24,21 @@ function init() {
     camera.position.z = 500;
     controls = new TrackballControls(camera);
     scene = new THREE.Scene();
-    var light = new THREE.PointLight(0xffffff);
-    light.position.set(500, 500, 500);
-    scene.add(light);
-   
+
+    var light = new THREE.PointLight( 0xffffff );
+    light.position.set( 500, 500, 500 );
+    scene.add( light );
+
+    var light = new THREE.PointLight( 0xffffff, 0.25 );
+    light.position.set( - 500, - 500, - 500 );
+    scene.add( light );
     
-    sphere = ''
+    covid = ''
 
     loader.load('./src/models/covid.glb', gltf => {
-        sphere = gltf.scene, new THREE.MeshLambertMaterial()
-        scene.add(sphere);
-        sphere.scale.set(200, 200, 200) // scale here
+        covid = gltf.scene,new THREE.MeshPhongMaterial( { flatShading: true } ) ;
+        scene.add(covid);
+        covid.scale.set(200, 200, 200) 
     });
 
     // Plane
@@ -44,7 +48,7 @@ function init() {
 
 
     // container.appendChild( renderer.domElement );
-    effect = new AsciiEffect(renderer);
+    effect = new AsciiEffect( renderer, '#?!"“”‘’;:π*+•—-_,.   ', { invert: true } );
     effect.setSize(width, height);
     container.appendChild(effect.domElement);
 
@@ -65,9 +69,9 @@ function animate() {
 
 function render() {
     var timer = Date.now() - start;
-    // sphere.position.y = Math.abs(Math.sin(timer * 0.002)) * 150;
-    // sphere.rotation.x = timer * 0.0003;
-    // sphere.rotation.z = timer * 0.0002;
+    // covid.position.y = Math.abs(Math.sin(timer * 0.002)) * 150;
+    // covid.rotation.x = timer * 0.0003;
+    // covid.rotation.z = timer * 0.0002;
     camera.position.z = Math.abs(Math.sin(timer * 0.0002)) * 500;;
     controls.update();
     effect.render(scene, camera);
