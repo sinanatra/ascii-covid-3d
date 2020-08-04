@@ -1,7 +1,17 @@
 body {
-    font-family: Monospace;
-    background-color: black;
-    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    letter-spacing: 2px;
+    background-color: darkslateblue;
+    color: hotpink;
     margin: 0px;
     overflow: hidden;
+}
+
+div, p{
+    position: absolute;
+}
+
+table{
+    font-family: monospace !important;
+    letter-spacing: 10px;
 }

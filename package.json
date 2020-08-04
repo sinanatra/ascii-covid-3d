@@ -1,9 +1,15 @@
 {
-  "name": "",
+  "name": "ascii-3d",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "canvas-renderer": "^2.2.0",
+    "three": "^0.119.1",
+    "three-asciieffect": "^1.0.1",
+    "three-gltf-loader": "^1.111.0",
+    "three-stl-loader": "^1.0.6",
+    "three-trackballcontrols": "0.0.7"
   },
   "scripts": {
     "watch": "webpack-dev-server --mode development --watch",
