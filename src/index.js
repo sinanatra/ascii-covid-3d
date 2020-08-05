@@ -46,9 +46,9 @@ function init() {
     renderer.setClearColor(0xf0f0f0);
     renderer.setSize(width, height);
 
-
-    // container.appendChild( renderer.domElement );
-    effect = new AsciiEffect( renderer, '#"’;:π*+•—-_,.  ', { invert: true } );
+   
+    // container.appendChild( renderer.domElement ); %#########
+    effect = new AsciiEffect( renderer, '—|/+—•-_,.  ', { invert: true } );
     effect.setSize(width, height);
     container.appendChild(effect.domElement);
 
@@ -72,7 +72,9 @@ function render() {
     covid.position.y =  timer * 0.0003;
     covid.rotation.x = timer * 0.0003;
     covid.rotation.z = timer * 0.0002;
-    camera.position.z = Math.abs(Math.sin(timer * 0.0002)) * 500;;
+    camera.position.y = timer * 0.0002;
+    camera.position.z = Math.abs(Math.sin(timer * 0.0002)) * 1000;
+
     controls.update();
     effect.render(scene, camera);
 
