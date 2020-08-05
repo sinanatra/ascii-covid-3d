@@ -22,11 +22,11 @@ module.exports = {
         port: 3000,
     },
     plugins: [
-        new CleanWebpackPlugin(),
+        new CleanWebpackPlugin(), 
         new webpack.HotModuleReplacementPlugin(),
         new CopyPlugin({
             patterns: [
-                { from: 'src/models', to: 'public/models' },
+                { from: 'src/assets', to: 'src/assets' },
             ],
         }),
         new HtmlWebpackPlugin({

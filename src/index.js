@@ -35,7 +35,7 @@ function init() {
     
     covid = ''
 
-    loader.load('./src/models/covid.glb', gltf => {
+    loader.load('./src/assets/covid.glb', gltf => {
         covid = gltf.scene,new THREE.MeshPhongMaterial( { flatShading: true } ) ;
         scene.add(covid);
         covid.scale.set(200, 200, 200) 
