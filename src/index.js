@@ -48,7 +48,7 @@ function init() {
 
 
     // container.appendChild( renderer.domElement );
-    effect = new AsciiEffect( renderer, '#?!"’;:π*+•—-_,.  ', { invert: true } );
+    effect = new AsciiEffect( renderer, '#"’;:π*+•—-_,.  ', { invert: true } );
     effect.setSize(width, height);
     container.appendChild(effect.domElement);
 
