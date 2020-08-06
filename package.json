@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "canvas-renderer": "^2.2.0",
+    "file-loader": "^6.0.0",
     "three": "^0.119.1",
     "three-asciieffect": "^1.0.1",
     "three-gltf-loader": "^1.111.0",

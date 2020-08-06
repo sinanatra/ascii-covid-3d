@@ -20,23 +20,24 @@ function init() {
     container = document.createElement('div');
     document.body.appendChild(container);
     camera = new THREE.PerspectiveCamera(70, width / height, 1, 1000);
-    camera.position.y = 150;
+    camera.position.y = 50;
     camera.position.z = 500;
     controls = new TrackballControls(camera);
+    controls.enabled = false;
     scene = new THREE.Scene();
 
-    var light = new THREE.PointLight( 0xffffff );
+    var light = new THREE.PointLight( 0xffffff, 10 );
     light.position.set( 500, 500, 500 );
     scene.add( light );
 
-    var light = new THREE.PointLight( 0xffffff, 0.25 );
-    light.position.set( - 500, - 500, - 500 );
+    var light = new THREE.PointLight( 0xffffff, 15 );
+    light.position.set( 1500, 1500, 1500 );
     scene.add( light );
     
     covid = ''
 
     loader.load('./src/assets/covid.glb', gltf => {
-        covid = gltf.scene,new THREE.MeshPhongMaterial( { flatShading: true } ) ;
+        covid = gltf.scene, new THREE.MeshPhongMaterial( { flatShading: true } ) ;
         scene.add(covid);
         covid.scale.set(200, 200, 200) 
     });
@@ -47,8 +48,8 @@ function init() {
     renderer.setSize(width, height);
 
    
-    // container.appendChild( renderer.domElement ); %#########
-    effect = new AsciiEffect( renderer, '—|/+—•-_,.  ', { invert: true } );
+    // container.appendChild( renderer.domElement, ); 
+    effect = new AsciiEffect( renderer, '()—|/+—•-_,.  ', { invert: true } );
     effect.setSize(width, height);
     container.appendChild(effect.domElement);
 
@@ -70,10 +71,9 @@ function animate() {
 function render() {
     var timer = Date.now() - start;
     covid.position.y =  timer * 0.0003;
-    covid.rotation.x = timer * 0.0003;
-    covid.rotation.z = timer * 0.0002;
-    camera.position.y = timer * 0.0002;
-    camera.position.z = Math.abs(Math.sin(timer * 0.0002)) * 1000;
+    covid.rotation.x =  timer * 0.0003;
+    covid.rotation.z =  timer * 0.0002;
+    camera.position.z = Math.abs(Math.sin(timer * 0.0002)) * 300;
 
     controls.update();
     effect.render(scene, camera);
