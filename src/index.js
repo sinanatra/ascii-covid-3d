@@ -10,6 +10,7 @@ var container;
 var camera, controls, scene, renderer;
 var covid, plane, effect;
 var start = Date.now();
+let i = random();
 
 init();
 animate();
@@ -26,20 +27,20 @@ function init() {
     controls.enabled = false;
     scene = new THREE.Scene();
 
-    var light = new THREE.PointLight( 0xffffff, 10 );
-    light.position.set( 500, 500, 500 );
-    scene.add( light );
+    var light = new THREE.PointLight(0xffffff, 10);
+    light.position.set(500, 500, 500);
+    scene.add(light);
 
-    var light = new THREE.PointLight( 0xffffff, 15 );
-    light.position.set( 1500, 1500, 1500 );
-    scene.add( light );
-    
+    var light = new THREE.PointLight(0xffffff, 15);
+    light.position.set(1500, 1500, 1500);
+    scene.add(light);
+
     covid = ''
 
     loader.load('./src/assets/covid.glb', gltf => {
-        covid = gltf.scene, new THREE.MeshPhongMaterial( { flatShading: true } ) ;
+        covid = gltf.scene, new THREE.MeshPhongMaterial({ flatShading: true });
         scene.add(covid);
-        covid.scale.set(200, 200, 200) 
+        covid.scale.set(200, 200, 200)
     });
 
     // Plane
@@ -47,9 +48,11 @@ function init() {
     renderer.setClearColor(0xf0f0f0);
     renderer.setSize(width, height);
 
-   
     // container.appendChild( renderer.domElement, ); 
-    effect = new AsciiEffect( renderer, '()—|/+—•-_,.  ', { invert: true } );
+
+    let random_boolean = Math.random() >= 0.5;
+
+    effect = new AsciiEffect(renderer, '[]?|/^+—•-_,.  ', { invert: random_boolean });
     effect.setSize(width, height);
     container.appendChild(effect.domElement);
 
@@ -70,12 +73,30 @@ function animate() {
 
 function render() {
     var timer = Date.now() - start;
-    covid.position.y =  timer * 0.0003;
-    covid.rotation.x =  timer * 0.0003;
-    covid.rotation.z =  timer * 0.0002;
-    camera.position.z = Math.abs(Math.sin(timer * 0.0002)) * 300;
 
+    function animation1() {
+        covid.rotation.x = timer * 0.0002;
+    }
+
+    function animation2() {
+        covid.position.z = Math.abs(Math.sin(timer * 0.0002)) * 900;
+    }
+
+    function animation3() {
+        covid.position.y = timer * 0.0003;
+        covid.rotation.x = timer * 0.0003;
+        covid.rotation.z = timer * 0.0002;
+        camera.position.z = Math.abs(Math.sin(timer * 0.0002)) * 300;
+    }
+
+    eval('animation'+i+'()');
     controls.update();
     effect.render(scene, camera);
 
+}
+
+function random() {
+    var i = Math.floor(Math.random() * 20) % 4;
+    if (i <= 0) return random();
+    return i;
 }
