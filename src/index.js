@@ -11,6 +11,7 @@ var camera, controls, scene, renderer;
 var covid, plane, effect;
 var start = Date.now();
 let i = random();
+let j = random();
 
 init();
 animate();
@@ -52,7 +53,12 @@ function init() {
 
     let random_boolean = Math.random() >= 0.5;
 
-    effect = new AsciiEffect(renderer, '[]?|/^+—•-_,.  ', { invert: random_boolean });
+    let ascii = '|/^+—•-_,.';
+    let ascii1 = ' ▁▂▃▄▅▆▇█';
+    let ascii2 = '▖▗▘▙▚▛▜▝▞▟';
+    let ascii3 = '/|•¬—–- ';
+
+    effect = new AsciiEffect(renderer, eval('ascii' + j), { invert: random_boolean });
     effect.setSize(width, height);
     container.appendChild(effect.domElement);
 
