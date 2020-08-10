@@ -55,7 +55,7 @@ function init() {
 
     let ascii = '|/^+—•-_,.';
     let ascii1 = ' ▁▂▃▄▅▆▇█';
-    let ascii2 = '▖▗▘▙▚▛▜▝▞▟';
+    let ascii2 = ' .:-=+*#/';
     let ascii3 = '/|•¬—–- ';
 
     effect = new AsciiEffect(renderer, eval('ascii' + j), { invert: random_boolean });
@@ -85,7 +85,9 @@ function render() {
     }
 
     function animation2() {
-        covid.position.z = Math.abs(Math.sin(timer * 0.0002)) * 900;
+        covid.position.z = Math.abs(Math.sin(timer * 0.0002)) * 400;
+        camera.position.z = Math.abs(Math.sin(timer * 0.0002)) * 1200;
+
     }
 
     function animation3() {
